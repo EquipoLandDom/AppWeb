@@ -5,27 +5,32 @@ import com.Project.AppWeb.Services.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Enterprises")
+@RequestMapping("/Api/")
+@CrossOrigin("*")
 public class EnterpriseController {
 
     @Autowired
     EnterpriseService serviceEnterprise;
 
-    @GetMapping
+    @GetMapping(value = "/Enterprises")
     public List<Enterprise> getEnterprises(){
         return serviceEnterprise.getEnterprises();
     }
 
-    @PostMapping
+    @PostMapping(value = "/SaveC")
     public Enterprise saveEnterprise(@RequestBody Enterprise enterprise){
         return serviceEnterprise.saveEnterprise(enterprise);
     }
 
-    @PatchMapping("/{id}")
+    @GetMapping(value = "/FindC/{id}")
+    public Enterprise getEnterpriseById(@PathVariable("id")Integer id){
+        return serviceEnterprise.getEnterpriseById(id);
+    }
+
+    @PatchMapping(value = "/PatchC/{id}")
     public Enterprise updateEnterprise(@PathVariable("id") Integer id, @RequestBody Enterprise enterprise){
         Enterprise company = serviceEnterprise.getEnterpriseById(id);
         company.setName(enterprise.getName());
@@ -37,7 +42,7 @@ public class EnterpriseController {
         return serviceEnterprise.saveEnterprise(company);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/deleteC/{id}")
     public String deleteEnterprise(@PathVariable("id") int id){
         boolean ok = serviceEnterprise.deleteEnterprise(id);
         if (ok){

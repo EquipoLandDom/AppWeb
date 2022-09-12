@@ -17,8 +17,9 @@ public class Employee {
     @Column(name = "email", nullable = false, length = 50, unique = true)
     private String email;
     @ManyToOne
-    @JoinColumn(name = "id_enterprise")
+    @JoinColumn(name = "id_enterprise", nullable = false)
     private Enterprise enterprise;
+    @Column(name = "rol",nullable = false)
     @Enumerated(EnumType.STRING)
     private RoleNames rol;
 

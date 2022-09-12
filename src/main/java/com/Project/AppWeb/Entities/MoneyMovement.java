@@ -17,10 +17,10 @@ public class MoneyMovement {
     private long mount;
     private String concept;
     @ManyToOne
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "id_employee", nullable = false)
     private Employee user;
     @ManyToOne
-    @JoinColumn(name = "id_enterprise")
+    @JoinColumn(name = "id_enterprise", nullable = false)
     private Enterprise enterprise;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;

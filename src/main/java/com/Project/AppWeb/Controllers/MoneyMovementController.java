@@ -1,5 +1,6 @@
 package com.Project.AppWeb.Controllers;
 
+import com.Project.AppWeb.Entities.Enterprise;
 import com.Project.AppWeb.Entities.MoneyMovement;
 import com.Project.AppWeb.Services.MoneyMovementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("")//LUEGO LO DEFINIREMOS CUANDO ESTEMOS HACIENDO EL FRONT'END
 public class MoneyMovementController {
 
     @Autowired
@@ -23,8 +25,13 @@ public class MoneyMovementController {
         return serviceMovement.saveMovement(movement);
     }
 
-    @PatchMapping()
-    public MoneyMovement updateMovement(@PathVariable("") Integer id, @RequestBody MoneyMovement movement){
+    @GetMapping("/{id}")
+    public MoneyMovement getMovementById(@PathVariable("id")Integer id){
+        return serviceMovement.getMovementById(id);
+    }
+
+    @PatchMapping("/{id}")
+    public MoneyMovement updateMovement(@PathVariable("id") Integer id, @RequestBody MoneyMovement movement){
         MoneyMovement movementU = serviceMovement.getMovementById(id);
         movementU.setMount(movement.getMount());
         movementU.setConcept(movement.getConcept());
