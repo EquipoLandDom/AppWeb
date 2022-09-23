@@ -1,6 +1,6 @@
 package com.Project.AppWeb.Controllers;
 
-import com.Project.AppWeb.Entities.Employee;
+/*import com.Project.AppWeb.Entities.Employee;
 import com.Project.AppWeb.Services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -49,4 +49,4 @@ public class EmployeeController {
             return "it can't delete " + id;
         }
     }
-}
+}*/

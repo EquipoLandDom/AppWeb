@@ -1,7 +1,6 @@
 package com.Project.AppWeb.Controllers;
 
-import com.Project.AppWeb.Entities.Enterprise;
-import com.Project.AppWeb.Entities.MoneyMovement;
+/*import com.Project.AppWeb.Entities.MoneyMovement;
 import com.Project.AppWeb.Services.MoneyMovementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("")//LUEGO LO DEFINIREMOS CUANDO ESTEMOS HACIENDO EL FRONT'END
+@RequestMapping("")
 public class MoneyMovementController {
 
     @Autowired
@@ -51,4 +50,4 @@ public class MoneyMovementController {
             return "it can't delete " + id;
         }
     }
-}
+}*/
