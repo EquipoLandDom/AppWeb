@@ -25,23 +25,34 @@ public class Enterprise {
     private List<Employee> employees;
     @OneToMany(mappedBy = "enterprise")
     private List<MoneyMovement> movements;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date createAt;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updateAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    public void preUpdate() {
+        this.updatedAt = new Date();
+    }
 
     public Enterprise() {
     }
 
-    public Enterprise(String name, String direction, String phone, String NIT, List<Employee> employees, List<MoneyMovement> movements, Date createAt, Date updateAt) {
+    public Enterprise(int id, String name, String direction, String phone, String NIT, List<Employee> employees, List<MoneyMovement> movements, Date createdAt, Date updatedAt) {
+        this.id = id;
         this.name = name;
         this.direction = direction;
         this.phone = phone;
         this.NIT = NIT;
         this.employees = employees;
         this.movements = movements;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public int getId() {
@@ -100,19 +111,19 @@ public class Enterprise {
         this.movements = movements;
     }
 
-    public Date getCreateAt() {
-        return createAt;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getUpdateAt() {
-        return updateAt;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

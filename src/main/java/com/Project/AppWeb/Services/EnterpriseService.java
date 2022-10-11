@@ -25,12 +25,7 @@ public class EnterpriseService {
         return repositoryEnterprise.save(enterprise);
     }
 
-    public boolean deleteEnterprise(Integer id){
-        try{
-            repositoryEnterprise.deleteById(id);
-            return true;
-        }catch (Exception err){
-            return false;
-        }
+    public void deleteEnterpriseById(Integer id) {
+        repositoryEnterprise.deleteById(id);
     }
 }

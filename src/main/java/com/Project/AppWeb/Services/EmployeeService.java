@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class EmployeeService {
@@ -25,12 +26,11 @@ public class EmployeeService {
         return repositoryEmployee.save(employee);
     }
 
-    public boolean deleteEmployee(Integer id) {
-        try {
-            repositoryEmployee.deleteById(id);
-            return true;
-        } catch (Exception err) {
-            return false;
-        }
+    public void deleteEmployeeById(Integer id) {
+        repositoryEmployee.deleteById(id);
+    }
+
+    public List<Employee> findByIdEnterprise(Integer id) {
+        return repositoryEmployee.findByIdEnterprise(id);
     }
 }

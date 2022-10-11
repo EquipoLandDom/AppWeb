@@ -24,8 +24,6 @@ public class MoneyMovement {
     private Enterprise enterprise;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updateAt;
 
     public MoneyMovement() {
     }
@@ -36,7 +34,6 @@ public class MoneyMovement {
         this.user = user;
         this.enterprise = enterprise;
         this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 
     public int getId() {
@@ -87,11 +84,4 @@ public class MoneyMovement {
         this.createAt = createAt;
     }
 
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
 }

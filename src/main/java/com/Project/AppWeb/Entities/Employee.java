@@ -16,32 +16,32 @@ public class Employee {
     private String name;
     @Column(name = "email", nullable = false, length = 50, unique = true)
     private String email;
+
+    @Column(name = "id_enterprise")
+    private Integer idEnterprise;
     @ManyToOne
-    @JoinColumn(name = "id_enterprise", nullable = false)
+    @JoinColumn(name = "id_enterprise", nullable = false, insertable = false, updatable = false)
     private Enterprise enterprise;
-    @Column(name = "rol",nullable = false)
+    @Column(name = "rol", nullable = false)
     @Enumerated(EnumType.STRING)
     private RoleNames rol;
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
-    private Profile profile;
+    private User profile;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updateAt;
 
     public Employee() {
     }
 
-    public Employee(String name, String email, Enterprise enterprise, RoleNames rol, Profile profile, Date createAt, Date updateAt) {
+    public Employee(String name, String email, Enterprise enterprise, RoleNames rol, User profile, Date createAt) {
         this.name = name;
         this.email = email;
         this.enterprise = enterprise;
         this.rol = rol;
         this.profile = profile;
         this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 
     public int getId() {
@@ -92,19 +92,11 @@ public class Employee {
         this.createAt = createAt;
     }
 
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    public Profile getProfile() {
+    public User getProfile() {
         return profile;
     }
 
-    public void setProfile(Profile profile) {
+    public void setProfile(User profile) {
         this.profile = profile;
     }
 }

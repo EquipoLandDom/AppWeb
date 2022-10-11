@@ -25,12 +25,19 @@ public class MoneyMovementService {
         return repositoryMovement.save(movement);
     }
 
-    public boolean deleteMovement(Integer id) {
-        try {
-            repositoryMovement.deleteById(id);
-            return true;
-        } catch (Exception err) {
-            return false;
-        }
+    public void deleteMovementById(Integer id) {
+        repositoryMovement.deleteById(id);
+    }
+
+
+
+    public Long mountsByEmployee(Integer id){
+        return repositoryMovement.mountsByEmployee(id);
+    }
+    public Long mountsByEnterprise(Integer id) {
+        return repositoryMovement.mountsByEnterprise(id);
+    }
+    public Integer idByEmail(String email) {
+        return repositoryMovement.idByEmail(email);
     }
 }
